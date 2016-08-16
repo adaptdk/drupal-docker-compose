@@ -18,7 +18,7 @@ services:
     links:
       - mysql:mysql
       - memcached:memcached
-      - solr:solr-search-api-solr
+      - solr-search_api_solr:solr
   drupal8:
     image: adaptdk/docker-library-drupal:d8
     ports:
@@ -27,5 +27,4 @@ services:
     links:
       - mysql:mysql
       - memcached:memcached
-      - solr:solr-search-api-solr
-
+      - solr-search_api_solr:solr
