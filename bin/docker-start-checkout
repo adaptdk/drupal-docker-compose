@@ -1,6 +1,6 @@
 sudo chmod -R 777 htdocs/sites/default/files
 
-./docker-stop-checkout
+docker-stop-checkout
 
 docker run --name database -e MYSQL_ROOT_PASSWORD=root -d -v "$PWD/docker-drupal-data/mysql.conf.d":/etc/mysql/conf.d -v "$PWD/db":/var/lib/mysql mysql
 docker run --name memcache-host -d memcached
