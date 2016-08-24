@@ -1,11 +1,11 @@
+BASE_DIR=/Users/mathiasandersen/Sites/drupal-docker-compose
+
 sudo chmod -R 777 htdocs/sites/default/files
-
 docker-stop-checkout
-#docker rm `docker ps -aq`
 
-docker run --name database -e MYSQL_ROOT_PASSWORD=root -d -v ~/workspace/docker-drupal-data/mysql.conf.d:/etc/mysql/conf.d -v "$PWD/db":/var/lib/mysql mysql
+docker run --name database -e MYSQL_ROOT_PASSWORD=root -d -v $BASE_DIR/docker-drupal-data/mysql.conf.d:/etc/mysql/conf.d -v "$PWD/db":/var/lib/mysql mysql
 docker run --name memcache-host -d memcached
-docker run --name=solr-host -p 8983:8983 -v /home/mikkel/workspace/docker-drupal-data/solr-example-dsr/solr/collection1:/opt/solr-4.10.4/example/solr/collection1 -d mparker17/solr-search-api-solr
+docker run --name=solr-host -p 8983:8983 -v $BASE_DIR/docker-drupal-data/solr-example-dsr:/opt/solr-4.10.4/example -d mparker17/solr-search-api-solr
 docker run --name=server --link database:db --link memcache-host:memcache --link solr-host:solr01 -d -v "$PWD/htdocs":/var/www/html -p 8080:80 adaptdk/docker-library-drupal:d7
 
 sleep 5
