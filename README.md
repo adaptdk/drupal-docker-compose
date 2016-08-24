@@ -1,13 +1,13 @@
 # HOWTO Guide
 
 ## Dependencies
-* Docker
+* docker
 * docker-compose
 
 ## Up and running
 When dependencies have been installed run following:
 
-    docker-compose build
+    docker-compose create
 
 ## Commands
 When images have been build you can use following commands:
