@@ -1,4 +1,6 @@
-BASE_DIR=/Users/mathiasandersen/Sites/drupal-docker-compose
+SCRIPT=`realpath $0`
+BASE_DIR=`dirname $SCRIPT`
+BASE_DIR=`realpath $BASE_DIR/..`
 
 sudo chmod -R 777 htdocs/sites/default/files
 docker-stop-checkout
