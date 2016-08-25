@@ -3,6 +3,7 @@
 ## Dependencies
 * docker
 * docker-compose
+* realpath (for osx users: brew tap iveney/mocha; brew install realpath)
 
 ## Up and running
 When dependencies have been installed run following:
