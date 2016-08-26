@@ -10,15 +10,13 @@ services:
     image: memcached
   DatabaseData:
     image: tianon/true
-    volumes:
-      - ./.db:/var/lib/mysql
   database:
-    image: mysql
+    image: mariadb:10
     environment:
-      MYSQL_USER: adaptadmin
-      MYSQL_PASSWORD: root
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
       MYSQL_DATABASE: drupal
-      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: ''
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     volumes_from:
       - DatabaseData
