@@ -21,11 +21,11 @@ services:
     volumes_from:
       - DatabaseData
   server:
-    image: adaptdk/docker-library-drupal:d8
+    image: adaptdk/docker-library-drupal:d7
     ports:
       - 8080:80
     volumes:
-      - ./:/var/www/
+      - ./htdocs:/var/www/html
     links:
       - database:db
       - memcache-host:memcache
