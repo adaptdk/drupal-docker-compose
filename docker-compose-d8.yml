@@ -1,0 +1,36 @@
+version: '2'
+services:
+  solr-host:
+    image: mparker17/solr-search-api-solr
+    ports:
+      - 8985:8983
+    volumes:
+      - ./.solr:/opt/solr-4.10.4/example
+  memcache-host:
+    image: memcached
+  DatabaseData:
+    image: tianon/true
+    volumes:
+      - ./.db:/var/lib/mysql
+  database:
+    image: mysql
+    environment:
+      MYSQL_USER: adaptadmin
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: drupal
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes_from:
+      - DatabaseData
+  server:
+    image: adaptdk/docker-library-drupal:d8
+    environment:
+      DefaultRuntimeDir: /var/www/web
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/var/www/
+    links:
+      - database:db
+      - memcache-host:memcache
+      - solr-host:solr01

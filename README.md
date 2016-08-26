@@ -23,3 +23,9 @@ To shutdown containers again:
 
     docker-stop-checkout
 
+## For Drupal 8
+Setup a symlink from your webroot folder to html.
+
+    ln -s ./web html
+    
+    Run: docker-compose up
