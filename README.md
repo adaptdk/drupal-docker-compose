@@ -26,6 +26,10 @@ To shutdown containers again:
 ## For Drupal 8
 Setup a symlink from your webroot folder to html.
 
+    Copy docker-compose-d8.yml to your project root.
+    
+    Rename to docker-compose.yml
+
     ln -s ./web html
     
     Run: docker-compose up
