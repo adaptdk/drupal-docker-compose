@@ -1,16 +1,16 @@
 version: '2'
 services:
-  solr-host:
+  solr01:
     image: mparker17/solr-search-api-solr
     ports:
       - 8985:8983
     volumes:
       - ./.solr:/opt/solr-4.10.4/example
-  memcache-host:
+  mc01:
     image: memcached
-  DatabaseData:
+  db01Data:
     image: tianon/true
-  database:
+  db01:
     image: mariadb:10
     environment:
       MYSQL_USER: drupal
@@ -19,14 +19,28 @@ services:
       MYSQL_ROOT_PASSWORD: 'drupal'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     volumes_from:
-      - DatabaseData
-  server:
+      - db01Data
+  app01:
     image: adaptdk/docker-library-drupal:d8
+    working_dir: /var/www/html
     ports:
       - 8080:80
-    volumes:
-      - ./:/var/www/
     links:
-      - database:db
-      - memcache-host:memcache
-      - solr-host:solr01
+      - db01:db
+      - mc01:memcache
+      - solr01:solr01
+    volumes_from:
+      - app01Data
+  app01Data:
+    image: tianon/true
+    volumes:
+      - './:/var/www'
+  drush:
+    image: drush/drush:8-php5-alpine
+    links:
+      - db01
+      - mc01
+      - solr01
+    volumes_from:
+      - app01
+    working_dir: /var/www/html
