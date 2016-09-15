@@ -55,3 +55,9 @@ To use it:
     Rename to docker-sync.yml
 
     Run: docker-sync-stack start
+
+*Important*
+It is very important that following is changed to prevent docker to sync projects together.
+
+In docker-compose-dev.yml and docker-sync.yml replace all occurences of [your-site] with a unique string to this site.
+

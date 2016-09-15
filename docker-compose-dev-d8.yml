@@ -5,9 +5,9 @@ version: "2"
 services:
   app01Data:
     volumes:
-      - unison-sync:/var/www:rw # will be mounted on /var/www
+      - [your-site]-unison-sync:/var/www:rw # will be mounted on /var/www
 
 # that the important thing
 volumes:
-  unison-sync:
+  [your-site]-unison-sync:
     external: true
