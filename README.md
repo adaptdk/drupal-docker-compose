@@ -38,6 +38,7 @@ Setup a symlink from your webroot folder to html.
 Running Docker on OSX seems very slow.
 Some of the reason could be the shared file system has some issues.
 To speed it up a bit you can install docker-sync.
+Note that this project is using Unison for syncing currently.
 Follow the Wiki on: https://github.com/EugenMayer/docker-sync
 
 Note that this need Ruby to be v2.1.0+
