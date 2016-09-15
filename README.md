@@ -27,9 +27,31 @@ To shutdown containers again:
 Setup a symlink from your webroot folder to html.
 
     Copy docker-compose-d8.yml to your project root.
-    
+
     Rename to docker-compose.yml
 
     ln -s ./web html
-    
+
     Run: docker-compose up
+
+#### Docker for Mac
+Running Docker on OSX seems very slow.
+Some of the reason could be the shared file system has some issues.
+To speed it up a bit you can install docker-sync.
+Note that this project is using Unison for syncing currently.
+Follow the Wiki on: https://github.com/EugenMayer/docker-sync
+
+Note that this need Ruby to be v2.1.0+
+To upgrate Ruby follow the guide here: https://shellzero.wordpress.com/tag/how-to-update-ruby-2-0-to-the-latest-version-on-mac-os-x-yosemite/
+
+To use it:
+
+    Copy docker-compose-dev-d8.yml to your project root.
+
+    Rename to docker-compose-dev.yml
+
+    Copy docker-sync-d8.yml to your project root.
+
+    Rename to docker-sync.yml
+
+    Run: docker-sync-stack start
