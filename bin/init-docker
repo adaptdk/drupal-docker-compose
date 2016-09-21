@@ -30,6 +30,6 @@ if [ -n "$scriptVersion" ]; then
         ln -s "$sourceDir/docker-compose--dev-$scriptVersion.yml" "$directory/docker-compose-dev.yml"
         ln -s "$sourceDir/docker-sync-$scriptVersion.yml" "$directory/docker-sync.yml"
     fi
-    cp "$sourceDir/bin/start-dev.sh" "$directory"
-    echo "Project ready. Start your site with: ./start-dev.sh"
+    cp "$sourceDir/bin/start-docker.sh" "$directory"
+    echo "Project ready. Start your site with: ./start-docker.sh"
 fi
