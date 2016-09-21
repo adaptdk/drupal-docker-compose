@@ -5,6 +5,16 @@
 * docker-compose
 * realpath (linux users: smile, osx users: brew tap iveney/mocha; brew install realpath)
 
+## Setting up a new project
+
+    Add the init-docker to your path.
+
+    export PATH={path/to/drupal-docker-compose}/bin:$PATH
+    
+    Edit ./start-dev.sh and setup your project name.
+    
+    Use ./start-dev.sh to run docker
+
 ## Up and running
 When dependencies have been installed run following:
 
@@ -61,3 +71,8 @@ It is very important that following is changed to prevent docker to sync project
 
 In docker-compose-dev.yml and docker-sync.yml replace all occurences of [your-site] with a unique string to this site.
 
+## Initializing a fresh DB instance
+
+When a container is started for the first time, a new database with the specified name will be created and initialized with the provided configuration variables.
+Furthermore, it will execute files with extensions .sh, .sql and .sql.gz that are found in /docker-entrypoint-initdb.d. Files will be executed in alphabetical order.
+You can easily populate your mysql services by mounting a SQL dump into that directory and provide custom images with contributed data.
