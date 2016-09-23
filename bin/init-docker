@@ -24,12 +24,12 @@ if [ -n "$scriptVersion" ]; then
     echo "Creating drupal $scriptVersion setup."
     directory=$(pwd)
     sourceDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-    ln -s "$sourceDir/docker-compose-$scriptVersion.yml" "$directory/docker-compose.yml"
+    ln -s "$sourceDir/../docker-compose-$scriptVersion.yml" "$directory/docker-compose.yml"
     if [ $scriptVersion == "d8" ]; then
         echo "Symlinking sync and compose dev to project."
-        ln -s "$sourceDir/docker-compose--dev-$scriptVersion.yml" "$directory/docker-compose-dev.yml"
-        ln -s "$sourceDir/docker-sync-$scriptVersion.yml" "$directory/docker-sync.yml"
+        ln -s "$sourceDir/../docker-compose--dev-$scriptVersion.yml" "$directory/docker-compose-dev.yml"
+        cp "$sourceDir/../docker-sync-$scriptVersion.yml" "$directory/docker-sync.yml"
     fi
-    cp "$sourceDir/bin/start-docker.sh" "$directory"
-    echo "Project ready. Start your site with: ./start-docker.sh"
+    echo "Modify your docker-sync-yml and replace [your-site] with your project name."
+    echo "Start your site with: docker-sync-stack start"
 fi

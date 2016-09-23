@@ -11,9 +11,9 @@
 
     export PATH={path/to/drupal-docker-compose}/bin:$PATH
     
-    Edit ./start-dev.sh and setup your project name.
+    Edit ./docker-sync.yml and replace [your-site] with your project name.
     
-    Use ./start-dev.sh to run docker
+    Use: "docker-sync-stack start" to run docker
 
 ## Up and running
 When dependencies have been installed run following:
