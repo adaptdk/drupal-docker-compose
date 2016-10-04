@@ -44,3 +44,6 @@ services:
     volumes_from:
       - app01
     working_dir: /var/www/html
+
+volumes:
+  db01Data:

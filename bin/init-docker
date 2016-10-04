@@ -1,0 +1,35 @@
+#!/bin/bash
+PS3="Select drupal version you wish to use:"
+options=("Drupal 7" "Drupal 8" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Drupal 7")
+            echo Drupal 7
+            scriptVersion=d7
+            break
+            ;;
+        "Drupal 8")
+            echo Drupal 8
+            scriptVersion=d8
+            break
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo No version selected;;
+    esac
+done
+if [ -n "$scriptVersion" ]; then
+    echo "Creating drupal $scriptVersion setup."
+    directory=$(pwd)
+    sourceDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    ln -s "$sourceDir/../docker-compose-$scriptVersion.yml" "$directory/docker-compose.yml"
+    if [ $scriptVersion == "d8" ]; then
+        echo "Symlinking sync and compose dev to project."
+        ln -s "$sourceDir/../docker-compose--dev-$scriptVersion.yml" "$directory/docker-compose-dev.yml"
+        cp "$sourceDir/../docker-sync-$scriptVersion.yml" "$directory/docker-sync.yml"
+    fi
+    echo "Modify your docker-sync-yml and replace [your-site] with your project name."
+    echo "Start your site with: docker-sync-stack start"
+fi
