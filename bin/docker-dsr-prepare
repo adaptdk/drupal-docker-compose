@@ -10,5 +10,7 @@ git clone git@githost:/data/git/drupal/dsr/platform.git $DIR \
 && mkdir -p $DIR/htdocs/sites/default \
 && cp -r $SOURCE_DIR/htdocs/sites/default/settings.php $DIR/htdocs/sites/default/ \
 && cp -r $SOURCE_DIR/db-dumps $DIR/ \
-&& cd $DIR && ./build.sh \
-&& cd $DIR
+&& cp -r $SOURCE_DIR/.idea $DIR/ \
+&& mv $DIR/.idea/PROJECT.iml $DIR/.idea/$DIR.iml \
+&& sed -i "s/PROJECT\.iml/${DIR}.iml/g" $DIR/.idea/modules.xml
+cd $DIR && ./build.sh
