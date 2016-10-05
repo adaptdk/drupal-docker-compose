@@ -5,7 +5,7 @@ services:
     ports:
       - 8985:8983
     volumes:
-      - ./.solr:/opt/solr-4.10.4/example
+      - ./.docker/solr:/opt/solr-4.10.4/example
   mc01:
     image: memcached
   db01Data:
@@ -29,6 +29,8 @@ services:
       - db01:db
       - mc01:memcache
       - solr01:solr01
+    volumes:
+      - ./.docker/conf/php.override.ini:/usr/local/etc/php/conf.d/php.override.ini
     volumes_from:
       - app01Data
   app01Data:
