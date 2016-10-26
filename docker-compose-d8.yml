@@ -20,6 +20,8 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     volumes_from:
       - db01Data
+    volumes:
+          - './docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d'
   app01:
     image: adaptdk/docker-library-drupal:d8
     working_dir: /var/www/html
