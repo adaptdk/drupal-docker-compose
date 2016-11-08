@@ -5,15 +5,29 @@
 * docker-compose
 * realpath (linux users: smile, osx users: brew tap iveney/mocha; brew install realpath)
 
-## Setting up a new project
+## Setup this project
 
+    Git clone this project to your prefered workspace
+    
     Add the init-docker to your path.
 
     export PATH={path/to/drupal-docker-compose}/bin:$PATH
     
+    Add ddrush alias
+    
+    alias ddrush="docker-compose run --rm drush"
+
+## Run the project
+
+    cd path/to/project
+    
+    Run "init-docker" to initialise the docker setup.
+    
     Edit ./docker-sync.yml and replace [your-site] with your project name.
     
     Use: "docker-sync-stack start" to run docker
+
+
 
 ## Up and running
 When dependencies have been installed run following:

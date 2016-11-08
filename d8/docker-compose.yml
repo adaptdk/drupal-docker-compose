@@ -37,17 +37,20 @@ services:
       - app01Data
   app01Data:
     image: tianon/true
-    volumes:
-      - './:/var/www'
   drush:
     image: drush/drush:8-php5-alpine
     links:
       - db01
       - mc01
-      - solr01
     volumes_from:
       - app01
-    working_dir: /var/www/html
+  console:
+    image: console
+    links:
+      - app01
+      - db01
+    volumes_from:
+      - app01
 
 volumes:
   db01Data:
