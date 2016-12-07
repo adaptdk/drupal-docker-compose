@@ -3,7 +3,13 @@
 ## Dependencies
 * docker
 * docker-compose
-* realpath (linux users: smile, osx users: brew tap iveney/mocha; brew install realpath)
+* realpath:<br>
+    linux users: smile<br>
+    osx users: 
+``` 
+brew tap iveney/mocha
+brew install realpath
+```
 
 ## Setting up a new project
 
